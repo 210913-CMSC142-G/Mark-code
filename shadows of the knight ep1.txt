@@ -1,0 +1,65 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+# w: width of the building.
+# h: height of the building.
+w, h = [int(i) for i in input().split()]
+n = int(input())  # maximum number of turns before game over.
+x0, y0 = [int(i) for i in input().split()]
+lox = 0
+loy = 0
+def nextjumpbin(bomb_dir,x0,y0,w,h,lox,loy):
+    if(bomb_dir=="U"):
+        h = y0-1
+        y0 = (loy+h)//2
+    elif(bomb_dir=="UR"):
+        lox = x0+1
+        x0 = (lox + w)//2 
+        h = y0-1
+        y0 = (loy+h)//2
+    elif(bomb_dir=="R"):
+        lox = x0+1
+        x0 = (lox + w)//2
+    elif(bomb_dir=="DR"):
+        lox = x0+1
+        x0 = (lox + w)//2 
+        loy = y0+1
+        y0 = (loy+h)//2
+    elif(bomb_dir=="D"):
+        loy = y0+1
+        y0 = (loy+h)//2
+    elif(bomb_dir=="DL"):
+        w = x0-1
+        x0 = (lox + w)//2 
+        loy = y0+1
+        y0 = (loy+h)//2
+    elif(bomb_dir=="L"):
+        w = x0-1
+        x0 = (lox + w)//2 
+    elif(bomb_dir=="UL"):
+        w = x0-1
+        x0 = (lox + w)//2   
+        h = y0-1
+        y0 = (loy+h)//2    
+    return x0,y0,lox,loy,w,h
+
+# game loop
+while True:
+    bomb_dir = input()  # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
+    
+   
+    # Write an action using print
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+    jump = nextjumpbin(bomb_dir,x0,y0,w,h,lox,loy)
+    x0 = jump[0]
+    y0 = jump[1]
+    lox = jump[2]
+    loy = jump[3]
+    w = jump[4]
+    h = jump[5]
+    # the location of the next window Batman should jump to.
+    print(str(x0)+" "+str(y0))
+    
