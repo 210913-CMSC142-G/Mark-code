@@ -1,0 +1,54 @@
+def iflatin(m):
+ 
+    n = len(m)
+  
+    # Two arrays of n sets representing each row & column
+    rows = []
+    for i in range(n):
+        rows.append(set([]))
+  
+    cols = []
+    for i in range(n):
+        cols.append(set([]))
+  
+    # Number of invalid elements (elements not in range [1,n])
+    inv = 0
+  
+    for i in range(n):
+        for j in range(n):
+            rows[i].add(m[i][j])
+            cols[j].add(m[i][j])
+  
+            if (m[i][j] > n or m[i][j] <= 0):
+                inv += 1
+             
+    # Rows with repeated elements
+    rrows = 0
+  
+    # Columns with repeated elements
+    rcols = 0
+  
+    # Counting orthogonals (rows/cols) with repeated elements
+    for i in range(n):
+        if (len(rows[i]) != n):
+            rrows+=1
+         
+        if (len(cols[i]) != n):
+            rcols+=1
+  
+    if (rrows == 0 or rcols == 0 and inv == 0):
+        # Only Latin Square if rows&cols are all appropriate size, and all characters are within [1,n]
+        print("Matrix is a Latin Square.")
+    else:
+        print("Matrix is NOT a Latin Square.")
+  
+    return
+ 
+m = [   [ 1, 4, 2, 3 ],
+        [ 2, 3, 1, 4 ],
+        [ 3, 2, 4, 1 ],
+        [ 4, 1, 3, 2 ] ]
+  
+iflatin(m)
+ 
+# Referenced original code by decode2207 on geeksforgeeks.org

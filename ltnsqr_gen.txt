@@ -1,0 +1,30 @@
+#Python 3 program 
+#Print an n x n sized Latin Square
+
+def latin(n):
+ 
+    # rot will determine the horizontal shifting of elements as each row is printed
+    rot = n + 1
+ 
+    # Main loop prints each row 
+    for i in range(1, n + 1):
+     
+        # For each row after the first, print n to rot
+        temp = rot
+        while (temp <= n) :
+            print(temp, end = " ")
+            temp += 1
+         
+        # Print 1 to rot - 1
+        for j in range(1, rot):
+            print(j, end = " ")
+ 
+        # Trigger earlier while loop and print new line
+        rot -= 1
+        print()
+ 
+n = 7
+ 
+latin(n)
+ 
+# Referenced code by R_Raj on geeksforgeeks.org
