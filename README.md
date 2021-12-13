@@ -1,4 +1,5 @@
 # Mark-code
+Both are made for python3
 
 For ltnsqr_gen
 Simply change the value of n to generate a Latin Square of that size
