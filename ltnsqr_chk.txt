@@ -36,7 +36,7 @@ def iflatin(m):
         if (len(cols[i]) != n):
             rcols+=1
   
-    if (rrows == 0 or rcols == 0 and inv == 0):
+    if (rrows == 0 and rcols == 0 and inv == 0):
         # Only Latin Square if rows&cols are all appropriate size, and all characters are within [1,n]
         print("Matrix is a Latin Square.")
     else:
